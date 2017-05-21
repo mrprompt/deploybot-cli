@@ -1,8 +1,11 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-from deploybot.client import Client
+from deploybot.repository import Repository
+import sys
 
 if __name__ == "__main__":
-    client = Client()
+    client = Repository()
+    arg1 = sys.argv[1]
 
-    print(client.getUrl("mrprompt"))
+    result = client.list()
+
+    print(result)
