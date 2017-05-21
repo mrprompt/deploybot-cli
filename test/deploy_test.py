@@ -13,4 +13,4 @@ class TestDeploy(TestCase):
     # test deployments list
     def test_list_must_be_return_json(self):
         self.skipTest("Need fix 422 error")
-        self.assertEqual(200, self.deploy.list())
+        self.assertEqual(200, self.deploy.list('77289', '92033'))

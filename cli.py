@@ -3,6 +3,7 @@ from deploybot.deploy import Deploy
 from deploybot.user  import User
 from deploybot.repository import Repository
 from deploybot.environment import Environment
+from deploybot.server import Server
 import sys
 import json
 import tableprint
@@ -17,10 +18,13 @@ def run(command):
         client = Environment()
     elif command == "deploy":
         client = Deploy()
+    elif command == "server":
+        client = Server()
     else:
         raise IndexError("Command not found")
 
     return client
+
 
 def headers(command):
     if command == "repository":
@@ -31,10 +35,13 @@ def headers(command):
         headers = ('ID', 'Repository ID', 'Environment Name')
     elif command == "deploy":
         headers = ('ID', 'Repository ID', 'Environment ID', 'State')
+    elif command == "server":
+        headers = ('ID', 'Environment ID', 'Name', 'Protocol')
     else:
         raise IndexError("Header not found")
 
     return headers
+
 
 def body(command, item):
     if command == "repository":
@@ -62,6 +69,13 @@ def body(command, item):
             unicode(item['repository_id']),
             unicode(item['environment_id']),
             unicode(item['state']),
+        ]
+    elif command == "server":
+        body = [
+            unicode(item['id']),
+            unicode(item['environment_id']),
+            unicode(item['name']),
+            unicode(item['protocol']),
         ]
     else:
         raise IndexError("Body not found")
