@@ -87,23 +87,53 @@ def body(command, item):
 if __name__ == "__main__":
     try:
         arg1 = sys.argv[1]
-        args = copy.copy(sys.argv)
 
-        args.pop(0)
-        args.pop(0)
+        if arg1 != '--help':
+            args = copy.copy(sys.argv)
 
-        # print(args)
+            args.pop(0)
+            args.pop(0)
 
-        result = run(arg1).list(*args)
-        jsonObject = json.loads(result)
+            headers = headers(arg1)
+            result = run(arg1).list(*args)
+            jsonObject = json.loads(result)
 
-        items = jsonObject.items()
-        data = []
+            items = jsonObject.items()
+            data = []
 
-        for item in items[1][1]:
-            data.append(body(arg1, item))
+            for item in items[1][1]:
+                data.append(body(arg1, item))
+        else:
+            headers = ('Command', 'Description', 'Parameters')
+            data = [
+                (
+                    'user',
+                    'list users',
+                    'none'
+                ),
+                (
+                    'deploy',
+                    'list deployments',
+                    '[repository_id] [environment_id]'
+                ),
+                (
+                    'environment',
+                    'list environments',
+                    '[repository_id]'
+                ),
+                (
+                    'repository',
+                    'list repositories',
+                    'none'
+                ),
+                (
+                    'server',
+                    'list servers',
+                    '[repository_id] [environment_id]'
+                )
+            ]
 
-        tableprint.table(data, headers=headers(arg1), width=32, style="fancy_grid")
+        tableprint.table(data, headers=headers, width=32, style="fancy_grid")
 
     except TypeError as e:
         print(str(e))
