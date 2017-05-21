@@ -15,10 +15,17 @@ DEPLOYBOT_ACCOUNT="foo"
 DEPLOYBOT_KEY="foo123bar456bar"
 ```
 
+# Usage
+
+```
+deploybot-cli --help
+
+```
+
 # Test
 
 ```
-pytest
+python setup.py test
 ```
 
 # License
