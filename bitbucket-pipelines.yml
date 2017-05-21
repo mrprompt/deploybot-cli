@@ -4,5 +4,5 @@ pipelines:
   default:
     - step:
         script:
-          - pip install ./requirements.txt
+          - pip install
           - python setup.py test
