@@ -21,8 +21,8 @@ class Client(object):
         account = os.environ.get('DEPLOYBOT_ACCOUNT')
         token = os.environ.get('DEPLOYBOT_TOKEN')
         url = self.get_url(account, endpoint)
-        global_headers = {
+        headers = {
             "X-Api-Token": token,
         }
 
-        return python_http_client.Client(host=url, request_headers=global_headers)
+        return python_http_client.Client(host=url, request_headers=headers)

@@ -10,6 +10,6 @@ class TestServer(TestCase):
 
         self.server = Server()
 
-    # test repositories list
+    # test servers list
     def test_list_must_be_return_json(self):
         self.assertNotEquals("", self.server.list())

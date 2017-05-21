@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from deploybot.deploy import Deploy
 from deploybot.user  import User
 from deploybot.repository import Repository
@@ -7,6 +8,7 @@ from deploybot.server import Server
 import sys
 import json
 import tableprint
+import copy
 
 
 def run(command):
@@ -85,8 +87,16 @@ def body(command, item):
 if __name__ == "__main__":
     try:
         arg1 = sys.argv[1]
-        result = run(arg1).list()
+        args = copy.copy(sys.argv)
+
+        args.pop(0)
+        args.pop(0)
+
+        # print(args)
+
+        result = run(arg1).list(*args)
         jsonObject = json.loads(result)
+
         items = jsonObject.items()
         data = []
 
@@ -94,6 +104,9 @@ if __name__ == "__main__":
             data.append(body(arg1, item))
 
         tableprint.table(data, headers=headers(arg1), width=32, style="fancy_grid")
+
+    except TypeError as e:
+        print(str(e))
 
     except IndexError as e:
         print(str(e))
