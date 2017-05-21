@@ -1,2 +1,2 @@
 python-http-client==2.2.1
-click=6.7
+click==6.7
