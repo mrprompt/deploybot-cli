@@ -14,4 +14,4 @@ class Environment(Client):
         client = self.get_client("environments")
         response = client.get(params)
 
-        return response.status_code
+        return response.body
