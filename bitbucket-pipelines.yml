@@ -1,0 +1,8 @@
+image: python:3.5
+
+pipelines:
+  default:
+    - step:
+        script:
+          - pip install setuptools
+          - python setup.py test
