@@ -3,11 +3,12 @@ from .client import Client
 
 
 class Deploy(Client):
-    def list(self, repository=""):
+    def list(self, repository="", environment=""):
         params = {
             "query_params": {
                 "limit": 20,
-                "repository_id": repository
+                "repository_id": repository,
+                "environment_id": environment
             }
         }
 
