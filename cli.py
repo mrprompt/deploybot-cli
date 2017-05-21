@@ -32,4 +32,4 @@ if __name__ == "__main__":
 
         print(result)
     except IndexError as e:
-        print "--help"
+        print("--help")
