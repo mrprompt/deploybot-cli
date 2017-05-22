@@ -1,4 +1,5 @@
 venv/
 .eggs/
+dist/
 *.pyc
 *.egg-info

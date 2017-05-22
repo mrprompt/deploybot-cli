@@ -9,7 +9,7 @@ with codecs_open('README.md', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name="Deploybot Client",
+    name="deploybot-cli",
     packages=['deploybot', 'test'],
     test_suite='test',
     version='0.0.1',
