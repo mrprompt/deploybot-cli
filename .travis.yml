@@ -10,10 +10,11 @@ matrix:
 
 before_script:
   - pip install -r requirements.txt
-  - pip install codeclimate-test-reporter
+  - pip install codeclimate-test-reporter pytest pytest-cov
 
 script:
   - python setup.py test
+  - py.test --cov=deploybot test/
 
 after_success:
-  - codeclimate-test-reporter
+  - codeclimate-test-reporter --file ./coverage
