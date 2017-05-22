@@ -13,7 +13,7 @@ class TestClient(TestCase):
 
     # Tests de default url raises an error without parameters
     def test_get_url_without_parameter(self):
-        self.assertRaises(TypeError, self.client.get_url)
+        self.assertRaises(TypeError, self.client.get_url())
 
     # Tests de default url return a full url
     def test_get_url_with_account_parameter(self):

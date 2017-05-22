@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from .client import Client
-import json
+from json import dumps
 
 
-class Help(Client):
+class Help(object):
     def list(self):
         content = {
             'meta': {
@@ -38,7 +37,6 @@ class Help(Client):
             ]
         }
 
-        result = json.dumps(content)
+        result = dumps(content)
 
-        # print(result)
         return result

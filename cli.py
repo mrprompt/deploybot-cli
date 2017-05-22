@@ -110,10 +110,9 @@ def main():
 
         header = headers(arg1)
         result = run(arg1).list(*args)
-        jsonObject = json.loads(result)
+        content = json.loads(result)
 
-        items = jsonObject.items()
-        # print(items[1][1])
+        items = content.items()
         data = []
 
         for item in items[1][1]:

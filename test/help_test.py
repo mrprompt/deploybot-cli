@@ -3,7 +3,7 @@ from unittest import TestCase
 from deploybot.help import Help
 
 
-class TestHelp(TestCase):
+class TestHelper(TestCase):
     # Bootstrap
     def setUp(self):
         TestCase.setUp(self)
@@ -12,4 +12,4 @@ class TestHelp(TestCase):
 
     # test repositories list
     def test_list_must_be_return_json(self):
-        self.assertNotEquals("", self.help.list)
+        self.assertNotEquals("", self.help.list())

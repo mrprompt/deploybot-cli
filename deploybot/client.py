@@ -8,7 +8,7 @@ class Client(object):
     Get url from account
     :return string
     """
-    def get_url(self, account, endpoint=""):
+    def get_url(self, account="", endpoint=""):
         default_url = "https://%s.deploybot.com/api/v1/%s"
 
         return default_url % (account, endpoint)
