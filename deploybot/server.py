@@ -4,13 +4,7 @@ from .client import Client
 
 class Server(Client):
     def list(self):
-        params = {
-            "query_params": {
-                "limit": 20
-            }
-        }
-
         client = self.get_client("servers")
-        response = client.get(params)
+        response = client.get()
 
         return response.body

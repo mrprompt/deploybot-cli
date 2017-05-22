@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
 from .client import Client
-import urllib
 
 
 class Deploy(Client):
     def list(self, repository="", environment=""):
-        params = {
-            "limit": 20,
-            "repository_id": repository,
-            "environment_id": environment
-        }
-
-        client = self.get_client("deployments?" + urllib.urlencode(params))
+        url = "deployments?limit=20&repository_id=%s&environment_id=%s" % (repository, environment)
+        client = self.get_client(url)
         response = client.get()
 
         return response.body
