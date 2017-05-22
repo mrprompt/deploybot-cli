@@ -1,5 +1,7 @@
 # Deploybot Client
 
+[![Build Status](https://travis-ci.org/mrprompt/deploybot-cli.svg?branch=master)](https://travis-ci.org/mrprompt/deploybot-cli)
+
 A client to [Deploybot](https://www.deploybot.com) service.
 
 # Install
