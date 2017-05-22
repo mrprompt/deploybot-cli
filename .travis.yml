@@ -10,6 +10,10 @@ matrix:
 
 before_script:
   - pip install -r requirements.txt
+  - pip install codeclimate-test-reporter
 
 script:
   - python setup.py test
+
+after_success:
+  - codeclimate-test-reporter

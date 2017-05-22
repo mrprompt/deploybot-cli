@@ -9,6 +9,7 @@ import sys
 import json
 import tableprint
 import copy
+import os
 
 
 def run(command):
@@ -84,7 +85,10 @@ def body(command, item):
 
     return body
 
-if __name__ == "__main__":
+
+def main():
+    column_width = os.environ.get('COLUMN_WIDTH', 32)
+
     try:
         arg1 = sys.argv[1]
 
@@ -94,7 +98,7 @@ if __name__ == "__main__":
             args.pop(0)
             args.pop(0)
 
-            headers = headers(arg1)
+            header = headers(arg1)
             result = run(arg1).list(*args)
             jsonObject = json.loads(result)
 
@@ -104,12 +108,12 @@ if __name__ == "__main__":
             for item in items[1][1]:
                 data.append(body(arg1, item))
         else:
-            headers = ('Command', 'Description', 'Parameters')
+            header = ('Command', 'Description', 'Parameters')
             data = [
                 (
                     'user',
                     'list users',
-                    'none'
+                    ''
                 ),
                 (
                     'deploy',
@@ -124,7 +128,7 @@ if __name__ == "__main__":
                 (
                     'repository',
                     'list repositories',
-                    'none'
+                    ''
                 ),
                 (
                     'server',
@@ -133,10 +137,14 @@ if __name__ == "__main__":
                 )
             ]
 
-        tableprint.table(data, headers=headers, width=32, style="fancy_grid")
+        tableprint.table(data, headers=header, width=int(column_width), style="fancy_grid")
 
     except TypeError as e:
         print(str(e))
 
     except IndexError as e:
-        print(str(e))
+        print("try %s --help" % sys.argv[0])
+
+
+if __name__ == "__main__":
+    main()
