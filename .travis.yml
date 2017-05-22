@@ -10,7 +10,7 @@ matrix:
 
 before_script:
   - pip install -r requirements.txt
-  - pip install codeclimate-test-reporter pytest pytest-cov
+  - pip install -Iv codeclimate-test-reporter<4.4
 
 script:
   - python setup.py test

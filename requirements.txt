@@ -1,3 +1,6 @@
 python-http-client==2.2.1
 click==6.7
 tableprint==0.6.1
+coverage>=4.0,<4.4
+pytest
+pytest-cov
