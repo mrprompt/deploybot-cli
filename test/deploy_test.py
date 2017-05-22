@@ -11,5 +11,14 @@ class TestDeploy(TestCase):
         self.deploy = Deploy()
 
     # test deployments list
-    def test_list_must_be_return_json(self):
+    def test_list(self):
         self.assertNotEquals('', self.deploy.list('77289', '92033'))
+
+    # test deployment get
+    def test_get(self):
+        self.assertNotEquals('', self.deploy.get('7929622'))
+
+    # test deployment trigger
+    def test_trigger(self):
+        self.skipTest('Don`t do this')
+        self.assertNotEquals('', self.deploy.trigger('7929622'))

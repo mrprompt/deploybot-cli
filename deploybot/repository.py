@@ -8,3 +8,9 @@ class Repository(Client):
         response = client.get()
 
         return response.body
+
+    def get(self, repository):
+        client = self.get_client("repositories/%s" % repository)
+        response = client.get()
+
+        return response.body

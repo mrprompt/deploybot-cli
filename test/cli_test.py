@@ -11,9 +11,8 @@ class TestCli(TestCase):
 
         self.runner = CliRunner()
 
-    def test_cli_without_parameter_show_help(self):
+    def test_cli(self):
         self.skipTest("skip")
-        result = self.runner.invoke(cli, ['--help'])
-        print(result)
+        result = self.runner.invoke(cli, ['help'])
 
         assert result.exit_code == 0

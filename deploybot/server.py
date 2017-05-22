@@ -8,3 +8,9 @@ class Server(Client):
         response = client.get()
 
         return response.body
+
+    def get(self, server):
+        client = self.get_client("servers/%s" % server)
+        response = client.get()
+
+        return response.body

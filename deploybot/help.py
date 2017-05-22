@@ -10,27 +10,27 @@ class Help(object):
             },
             'entries': [
                 {
-                    'command': 'user',
+                    'command': 'user list',
                     'description': 'list users',
                     'params': ''
                 },
                 {
-                    'command': 'deploy',
+                    'command': 'deploy list',
                     'description': 'list deployments',
                     'params': '[repository_id] [environment_id]'
                 },
                 {
-                    'command': 'environment',
+                    'command': 'environment list',
                     'description': 'list environments',
                     'params': '[repository_id]'
                 },
                 {
-                    'command': 'repository',
+                    'command': 'repository list',
                     'description': 'list repositories',
                     'params': ''
                 },
                 {
-                    'command': 'server',
+                    'command': 'server list',
                     'description': 'list servers',
                     'params': '[repository_id] [environment_id]'
                 }

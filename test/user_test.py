@@ -11,5 +11,9 @@ class TestUser(TestCase):
         self.user = User()
 
     # test users list
-    def test_list_must_be_return_json(self):
+    def test_list(self):
         self.assertNotEquals("", self.user.list())
+
+    # test users get
+    def test_get(self):
+        self.assertNotEquals("", self.user.get('46964'))

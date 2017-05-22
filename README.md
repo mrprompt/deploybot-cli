@@ -18,17 +18,18 @@ pip install deploybot-cli
 DEPLOYBOT_ACCOUNT="foo"
 DEPLOYBOT_KEY="foo123bar456bar"
 COLUMN_WIDTH=15 (optional - default = 32)
+COLUMN_STYLE="block" (optional - default = fancy_grid, availables = round, fancy_grid, grid, clean and block)
 ```
 
 # Usage
 
 ```
 - deploybot-cli help
-- deploybot-cli user
-- deploybot-cli deploy [repository_id] [environment_id]
-- deploybot-cli environment [repository_id]
-- deploybot-cli repository 
-- deploybot-cli server [repository_id] [environment_id]
+- deploybot-cli user list
+- deploybot-cli deploy list [repository_id] [environment_id]
+- deploybot-cli environment list [repository_id]
+- deploybot-cli repository list
+- deploybot-cli server list [repository_id] [environment_id]
 
 ```
 

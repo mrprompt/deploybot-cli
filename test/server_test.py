@@ -11,5 +11,9 @@ class TestServer(TestCase):
         self.server = Server()
 
     # test servers list
-    def test_list_must_be_return_json(self):
+    def test_list(self):
         self.assertNotEquals("", self.server.list())
+
+    # test server get
+    def test_get(self):
+        self.assertNotEquals("", self.server.get(125815))

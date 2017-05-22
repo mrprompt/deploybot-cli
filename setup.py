@@ -26,8 +26,4 @@ setup(
     install_requires=[
       'click', 'python-http-client'
     ],
-    entry_points="""
-    [console_scripts]
-    deploybot-cli=cli.py
-    """
 )

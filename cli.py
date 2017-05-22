@@ -38,9 +38,9 @@ def headers(command):
     elif command == "user":
         headers = ('ID', 'Name', 'Email', 'Admin')
     elif command == "environment":
-        headers = ('ID', 'Repository ID', 'Environment Name')
+        headers = ('ID', 'Repository ID', 'Environment Name', 'Branch', 'Automatic', 'Current')
     elif command == "deploy":
-        headers = ('ID', 'Repository ID', 'Environment ID', 'State')
+        headers = ('ID', 'Repository ID', 'Environment ID', 'State', 'Version')
     elif command == "server":
         headers = ('ID', 'Environment ID', 'Name', 'Protocol')
     elif command == "help":
@@ -51,39 +51,88 @@ def headers(command):
     return headers
 
 
-def body(command, item):
-    if command == "repository":
+def body(command, cmd, item):
+    if command == "repository" and cmd == "list":
         body = [
             unicode(item['id']),
             unicode(item['name']),
             unicode(item['title']),
         ]
-    elif command == "user":
+    elif command == "repository" and cmd == "get":
+        print(item)
+        body = [
+            unicode(item[7]),
+            unicode(item[0]),
+            unicode(item[2]),
+        ]
+    elif command == "repository" and cmd == "trigger":
+        print(item)
+        body = [
+            unicode(item[7]),
+            unicode(item[0]),
+            unicode(item[2]),
+        ]
+    elif command == "user" and cmd == "list":
         body = [
             unicode(item['id']),
             unicode(item['first_name'] + ' ' + item['last_name']),
             unicode(item['email']),
             unicode(item['is_admin']),
         ]
-    elif command == "environment":
+    elif command == "user" and cmd == "get":
+        body = [
+            unicode(item[7]),  # id
+            unicode(item[0] + ' ' + item[1]),  # name
+            unicode(item[4]),  # email
+            unicode(bool(item[5])),  # admin
+        ]
+    elif command == "environment" and cmd == "list":
         body = [
             unicode(item['id']),
             unicode(item['repository_id']),
             unicode(item['name']),
+            unicode(item['branch_name']),
+            unicode(item['is_automatic']),
+            unicode(item['current_version']),
         ]
-    elif command == "deploy":
+    elif command == "environment" and cmd == "get":
+        body = [
+            unicode(item[10]),
+            unicode(item[0]),
+            unicode(item[1]),
+            unicode(item[7]),
+            unicode(item[6]),
+            unicode(item[9]),
+        ]
+    elif command == "deploy" and cmd == "list":
         body = [
             unicode(item['id']),
             unicode(item['repository_id']),
             unicode(item['environment_id']),
             unicode(item['state']),
+            unicode(item['deployed_version']),
         ]
-    elif command == "server":
+    elif command == "deploy" and cmd == "get":
+        body = [
+            unicode(item[13]),
+            unicode(item[1]),
+            unicode(item[2]),
+            unicode(item[10]),
+            unicode(item[11]),
+        ]
+    elif command == "server" and cmd == "list":
         body = [
             unicode(item['id']),
             unicode(item['environment_id']),
             unicode(item['name']),
             unicode(item['protocol']),
+        ]
+    elif command == "server" and cmd == "get":
+        body = [
+            unicode(item[8]),
+            unicode(item[1]),
+            unicode(item[3]),
+            unicode(item[2]),
         ]
     elif command == "help":
         body = [
@@ -99,6 +148,7 @@ def body(command, item):
 
 def main():
     column_width = os.environ.get('COLUMN_WIDTH', 32)
+    style = os.environ.get('COLUMN_STYLE', 'fancy_grid')
 
     try:
         arg1 = sys.argv[1]
@@ -108,15 +158,27 @@ def main():
         args.pop(0)
         args.pop(0)
 
-        header = headers(arg1)
-        result = run(arg1).list(*args)
-        content = json.loads(result)
+        if arg1 == 'help':
+            cmd = 'list'
+        else:
+            cmd = args.pop(0)
 
-        items = content.items()
+        result = getattr(run(arg1), cmd)(*args)
+
+        header = headers(arg1)
+        content = json.loads(result)
         data = []
 
-        for item in items[1][1]:
-            data.append(body(arg1, item))
+        if cmd == 'list':
+            items = content.items()
+
+            for item in items[1][1]:
+                data.append(body(arg1, cmd, item))
+        else:
+            item = content.values()
+
+            data.append(body(arg1, cmd, item))
+
     except TypeError as e:
         header = ('Error', 'Code')
         data = [str(e), 0]
@@ -129,7 +191,7 @@ def main():
             )
         ]
 
-    tableprint.table(data, headers=header, width=int(column_width), style="fancy_grid")
+    tableprint.table(data, headers=header, width=int(column_width), style=unicode(style))
 
 
 if __name__ == "__main__":

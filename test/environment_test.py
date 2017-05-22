@@ -17,3 +17,7 @@ class TestEnvironment(TestCase):
     # test environments list
     def test_list_with_repository_parameter(self):
         self.assertNotEquals("", self.environment.list(1900))
+
+    # test environment get
+    def test_get(self):
+        self.assertNotEquals("", self.environment.get(106090))

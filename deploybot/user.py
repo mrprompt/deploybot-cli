@@ -8,3 +8,9 @@ class User(Client):
         response = client.get()
 
         return response.body
+
+    def get(self, user):
+        client = self.get_client("users/%s" % user)
+        response = client.get()
+
+        return response.body

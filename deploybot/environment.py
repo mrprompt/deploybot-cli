@@ -9,3 +9,10 @@ class Environment(Client):
         response = client.get()
 
         return response.body
+
+    def get(self, environment):
+        url = "environments/%s" % environment
+        client = self.get_client(url)
+        response = client.get()
+
+        return response.body
