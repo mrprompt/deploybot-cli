@@ -20,5 +20,4 @@ class TestDeploy(TestCase):
 
     # test deployment trigger
     def test_trigger(self):
-        self.skipTest('Don`t do this')
-        self.assertNotEquals('', self.deploy.trigger('7929622'))
+        self.assertNotEquals('', self.deploy.trigger('106088'))

@@ -59,14 +59,6 @@ def body(command, cmd, item):
             unicode(item['title']),
         ]
     elif command == "repository" and cmd == "get":
-        print(item)
-        body = [
-            unicode(item[7]),
-            unicode(item[0]),
-            unicode(item[2]),
-        ]
-    elif command == "repository" and cmd == "trigger":
-        print(item)
         body = [
             unicode(item[7]),
             unicode(item[0]),
@@ -113,6 +105,14 @@ def body(command, cmd, item):
             unicode(item['deployed_version']),
         ]
     elif command == "deploy" and cmd == "get":
+        body = [
+            unicode(item[13]),
+            unicode(item[1]),
+            unicode(item[2]),
+            unicode(item[10]),
+            unicode(item[11]),
+        ]
+    elif command == "deploy" and cmd == "trigger":
         body = [
             unicode(item[13]),
             unicode(item[1]),
