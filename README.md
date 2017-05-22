@@ -17,6 +17,7 @@ pip install deploybot-cli
 ```
 DEPLOYBOT_ACCOUNT="foo"
 DEPLOYBOT_KEY="foo123bar456bar"
+COLUMN_WIDTH=15 (optional - default = 32)
 ```
 
 # Usage
