@@ -26,10 +26,16 @@ COLUMN_STYLE="block" (optional - default = fancy_grid, availables = round, fancy
 ```
 - deploybot-cli help
 - deploybot-cli user list
+- deploybot-cli user get [user_id]
 - deploybot-cli deploy list [repository_id] [environment_id]
+- deploybot-cli deploy get [deploy_id]
+- deploybot-cli deploy trigger [deploy_id]
 - deploybot-cli environment list [repository_id]
+- deploybot-cli environment get [environment_id]
 - deploybot-cli repository list
+- deploybot-cli repository get [repository_id]
 - deploybot-cli server list [repository_id] [environment_id]
+- deploybot-cli server get [server_id]
 
 ```
 

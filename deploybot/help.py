@@ -15,9 +15,24 @@ class Help(object):
                     'params': ''
                 },
                 {
+                    'command': 'user get',
+                    'description': 'get user',
+                    'params': '[user_id]'
+                },
+                {
                     'command': 'deploy list',
                     'description': 'list deployments',
                     'params': '[repository_id] [environment_id]'
+                },
+                {
+                    'command': 'deploy get',
+                    'description': 'get deploy',
+                    'params': '[deploy_id]'
+                },
+                {
+                    'command': 'deploy trigger',
+                    'description': 'trigger deploy',
+                    'params': '[deploy_id]'
                 },
                 {
                     'command': 'environment list',
@@ -25,14 +40,29 @@ class Help(object):
                     'params': '[repository_id]'
                 },
                 {
+                    'command': 'environment get',
+                    'description': 'get environment',
+                    'params': '[enviroment_id]'
+                },
+                {
                     'command': 'repository list',
                     'description': 'list repositories',
+                    'params': ''
+                },
+                {
+                    'command': 'repository get',
+                    'description': 'get repository',
                     'params': ''
                 },
                 {
                     'command': 'server list',
                     'description': 'list servers',
                     'params': '[repository_id] [environment_id]'
+                },
+                {
+                    'command': 'server get',
+                    'description': 'get server',
+                    'params': '[server_id]'
                 }
             ]
         }
