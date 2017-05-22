@@ -23,7 +23,7 @@ COLUMN_WIDTH=15 (optional - default = 32)
 # Usage
 
 ```
-- deploybot-cli --help
+- deploybot-cli help
 - deploybot-cli user
 - deploybot-cli deploy [repository_id] [environment_id]
 - deploybot-cli environment [repository_id]

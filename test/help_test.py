@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
-from deploybot.user import User
+from deploybot.help import Help
 
 
-class TestUser(TestCase):
+class TestHelp(TestCase):
     # Bootstrap
     def setUp(self):
         TestCase.setUp(self)
 
-        self.user = User()
+        self.help = Help()
 
-    # test users list
+    # test repositories list
     def test_list_must_be_return_json(self):
-        self.assertNotEquals("", self.user.list())
+        self.assertNotEquals("", self.help.list)

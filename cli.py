@@ -5,6 +5,7 @@ from deploybot.user  import User
 from deploybot.repository import Repository
 from deploybot.environment import Environment
 from deploybot.server import Server
+from deploybot.help import Help
 import sys
 import json
 import tableprint
@@ -23,6 +24,8 @@ def run(command):
         client = Deploy()
     elif command == "server":
         client = Server()
+    elif command == "help":
+        client = Help()
     else:
         raise IndexError("Command not found")
 
@@ -40,6 +43,8 @@ def headers(command):
         headers = ('ID', 'Repository ID', 'Environment ID', 'State')
     elif command == "server":
         headers = ('ID', 'Environment ID', 'Name', 'Protocol')
+    elif command == "help":
+        headers = ('Command', 'Description', 'Parameters')
     else:
         raise IndexError("Header not found")
 
@@ -80,6 +85,12 @@ def body(command, item):
             unicode(item['name']),
             unicode(item['protocol']),
         ]
+    elif command == "help":
+        body = [
+            unicode(item['command']),
+            unicode(item['description']),
+            unicode(item['params'])
+        ]
     else:
         raise IndexError("Body not found")
 
@@ -92,58 +103,34 @@ def main():
     try:
         arg1 = sys.argv[1]
 
-        if arg1 != '--help':
-            args = copy.copy(sys.argv)
+        args = copy.copy(sys.argv)
 
-            args.pop(0)
-            args.pop(0)
+        args.pop(0)
+        args.pop(0)
 
-            header = headers(arg1)
-            result = run(arg1).list(*args)
-            jsonObject = json.loads(result)
+        header = headers(arg1)
+        result = run(arg1).list(*args)
+        jsonObject = json.loads(result)
 
-            items = jsonObject.items()
-            data = []
+        items = jsonObject.items()
+        # print(items[1][1])
+        data = []
 
-            for item in items[1][1]:
-                data.append(body(arg1, item))
-        else:
-            header = ('Command', 'Description', 'Parameters')
-            data = [
-                (
-                    'user',
-                    'list users',
-                    ''
-                ),
-                (
-                    'deploy',
-                    'list deployments',
-                    '[repository_id] [environment_id]'
-                ),
-                (
-                    'environment',
-                    'list environments',
-                    '[repository_id]'
-                ),
-                (
-                    'repository',
-                    'list repositories',
-                    ''
-                ),
-                (
-                    'server',
-                    'list servers',
-                    '[repository_id] [environment_id]'
-                )
-            ]
-
-        tableprint.table(data, headers=header, width=int(column_width), style="fancy_grid")
-
+        for item in items[1][1]:
+            data.append(body(arg1, item))
     except TypeError as e:
-        print(str(e))
-
+        header = ('Error', 'Code')
+        data = [str(e), 0]
     except IndexError as e:
-        print("try %s --help" % sys.argv[0])
+        header = ('Error', 'Code')
+        data = [
+            (
+                str(e),
+                "try %s help" % sys.argv[0],
+            )
+        ]
+
+    tableprint.table(data, headers=header, width=int(column_width), style="fancy_grid")
 
 
 if __name__ == "__main__":
