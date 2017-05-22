@@ -17,4 +17,4 @@ script:
   - py.test --cov=deploybot test/
 
 after_success:
-  - codeclimate-test-reporter --file ./coverage
+  - codeclimate-test-reporter
