@@ -6,7 +6,7 @@ setup(
     name="deploybot-cli",
     packages=['deploybot', 'test'],
     test_suite='test',
-    version='0.2.4',
+    version='0.2.5',
     description=u"Deploybot API Client",
     long_description=u"Deploybot terminal tool",
     classifiers=[],
