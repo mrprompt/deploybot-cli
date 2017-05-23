@@ -151,7 +151,7 @@ def body(command, cmd, item):
     return body
 
 
-def main():
+def main(out=sys.stdout):
     column_width = os.environ.get('COLUMN_WIDTH', 32)
     style = os.environ.get('COLUMN_STYLE', 'fancy_grid')
 
@@ -193,8 +193,7 @@ def main():
             )
         ]
 
-    tableprint.table(data, headers=header, width=int(column_width), style=unicode(style))
-
+    tableprint.table(data, headers=header, width=int(column_width), style=unicode(style), out=out)
 
 if __name__ == "__main__":
     main()

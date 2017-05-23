@@ -9,6 +9,12 @@ from deploybot.environment import Environment
 from deploybot.server import Server
 from deploybot.help import Help
 
+import mock
+import sys
+
+mock_stdout = mock.Mock()
+sys.stdout = mock_stdout
+
 
 class TestCli(TestCase):
     # Bootstrap
@@ -91,5 +97,6 @@ class TestCli(TestCase):
         self.assertIsInstance(cli.body(command, parameter, result), list)
 
     def test_main(self):
-        self.skipTest("Not implemented")
-        self.assertEquals(None,  cli.main())
+        result = cli.main(sys.stdout)
+
+        self.assertNotEquals("", result)
