@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from deploybot.client import Client
 from deploybot.deploy import Deploy
-from deploybot.user  import User
+from deploybot.user import User
 from deploybot.repository import Repository
 from deploybot.environment import Environment
 from deploybot.server import Server
@@ -14,16 +15,20 @@ import os
 
 
 def run(command):
+    account = os.environ.get('DEPLOYBOT_ACCOUNT')
+    token = os.environ.get('DEPLOYBOT_TOKEN')
+    client = Client(account, token)
+
     if command == "repository":
-        client = Repository()
+        client = Repository(client)
     elif command == "user":
-        client = User()
+        client = User(client)
     elif command == "environment":
-        client = Environment()
+        client = Environment(client)
     elif command == "deploy":
-        client = Deploy()
+        client = Deploy(client)
     elif command == "server":
-        client = Server()
+        client = Server(client)
     elif command == "help":
         client = Help()
     else:

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
 from deploybot.repository import Repository
+import mock
+
+Client = mock.Mock()
 
 
 class TestRepository(TestCase):
@@ -8,7 +11,7 @@ class TestRepository(TestCase):
     def setUp(self):
         TestCase.setUp(self)
 
-        self.repository = Repository()
+        self.repository = Repository(Client())
 
     # test repositories list
     def test_list(self):

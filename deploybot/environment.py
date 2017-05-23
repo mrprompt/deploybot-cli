@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-from .client import Client
-
 """
 Environment Class
 """
 
 
-class Environment(Client):
+class Environment:
+    """
+    Constructor
+    """
+    def __init__(self, client):
+        self.client = client
+
     """
     List environments
     :return string
@@ -14,7 +18,7 @@ class Environment(Client):
     def list(self, repository=""):
         url = "environments?repository_id=%s" % repository
 
-        return super(Environment, self).get(url)
+        return self.client.get(url)
 
     """
     Get an environment
@@ -23,4 +27,4 @@ class Environment(Client):
     def get(self, environment):
         url = "environments/%s" % environment
 
-        return super(Environment, self).get(url)
+        return self.client.get(url)

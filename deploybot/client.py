@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 import python_http_client
-import os
 
 """
 Client Class
 """
 
 
-class Client(object):
+class Client:
+    """
+    Constructor
+    """
+    def __init__(self, account, token):
+        self.account = account
+        self.token = token
+
     """
     Get url from account
     :return string
@@ -22,8 +28,8 @@ class Client(object):
     :return object
     """
     def get_client(self, endpoint=""):
-        account = os.environ.get('DEPLOYBOT_ACCOUNT')
-        token = os.environ.get('DEPLOYBOT_TOKEN')
+        account = self.account
+        token = self.token
         url = self.get_url(account, endpoint)
         headers = {
             "X-Api-Token": token,

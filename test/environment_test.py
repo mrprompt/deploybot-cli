@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
 from deploybot.environment import Environment
+import mock
+
+Client = mock.Mock()
 
 
 class TestEnvironment(TestCase):
@@ -8,7 +11,7 @@ class TestEnvironment(TestCase):
     def setUp(self):
         TestCase.setUp(self)
 
-        self.environment = Environment()
+        self.environment = Environment(Client())
 
     # test environments list
     def test_list_without_parameter(self):

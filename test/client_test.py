@@ -2,6 +2,7 @@
 from unittest import TestCase
 from deploybot.client import Client
 import python_http_client
+import os
 
 
 class TestClient(TestCase):
@@ -9,7 +10,10 @@ class TestClient(TestCase):
     def setUp(self):
         TestCase.setUp(self)
 
-        self.client = Client()
+        account = os.environ.get('DEPLOYBOT_ACCOUNT')
+        token = os.environ.get('DEPLOYBOT_TOKEN')
+
+        self.client = Client(account, token)
 
     # Tests de default url raises an error without parameters
     def test_get_url_without_parameter(self):
@@ -30,3 +34,11 @@ class TestClient(TestCase):
     # Test get_client
     def test_get_client_must_be_return_instance_of_client(self):
         self.assertIsInstance(self.client.get_client(), python_http_client.Client)
+
+    # Test get
+    def test_get(self):
+        self.assertNotEquals("", self.client.get("users"))
+
+    # Test post
+    def test_post(self):
+        self.assertNotEquals("", self.client.post("users", {"foo": "bar"}))

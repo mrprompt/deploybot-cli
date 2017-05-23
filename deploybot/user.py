@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
-from .client import Client
-
 """
 User Class
 """
 
 
-class User(Client):
+class User:
+    """
+    Constructor
+    """
+    def __init__(self, client):
+        self.client = client
+
     """
     List users
     :return string
     """
     def list(self):
-        return super(User, self)\
-            .get("users")
+        return self.client.get("users")
 
     """
     Get user
     :return string
     """
     def get(self, user):
-        return super(User, self)\
-            .get("users/%s" % user)
+        return self.client.get("users/%s" % user)

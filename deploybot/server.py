@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-from .client import Client
-
 """
 Server Class
 """
 
 
-class Server(Client):
+class Server:
+    """
+    Constructor
+    """
+    def __init__(self, client):
+        self.client = client
+
     """
     List servers
     :return string
@@ -14,7 +18,7 @@ class Server(Client):
     def list(self):
         url = "servers"
 
-        return super(Server, self).get(url)
+        return self.client.get(url)
 
     """
     Get server
@@ -23,4 +27,4 @@ class Server(Client):
     def get(self, server):
         url = "servers/%s" % server
 
-        return super(Server, self).get(url)
+        return self.client.get(url)

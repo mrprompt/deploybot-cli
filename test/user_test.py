@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
 from deploybot.user import User
+import mock
+
+Client = mock.Mock()
 
 
 class TestUser(TestCase):
@@ -8,7 +11,7 @@ class TestUser(TestCase):
     def setUp(self):
         TestCase.setUp(self)
 
-        self.user = User()
+        self.user = User(Client())
 
     # test users list
     def test_list(self):

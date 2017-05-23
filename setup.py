@@ -24,6 +24,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-      'click', 'python-http-client'
-    ],
+      'python-http-client'
+    ]
 )

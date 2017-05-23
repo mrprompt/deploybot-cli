@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-from .client import Client
-
 """
 Deployment Class
 """
 
 
-class Deploy(Client):
+class Deploy:
+    """
+    Constructor
+    """
+    def __init__(self, client):
+        self.client = client
+
     """
     List deployments
     :return string
@@ -16,7 +20,7 @@ class Deploy(Client):
         url += "&repository_id=%s" % repository
         url += "&environment_id=%s" % environment
 
-        return super(Deploy, self).get(url)
+        return self.client.get(url)
 
     """
     Get deployment by id
@@ -25,7 +29,7 @@ class Deploy(Client):
     def get(self, deploy):
         url = "deployments/%s" % deploy
 
-        return super(Deploy, self).get(url)
+        return self.client.get(url)
 
     """
     Trigger a deploy
@@ -34,4 +38,4 @@ class Deploy(Client):
     def trigger(self, environment):
         args = ("deployments", {'environment_id': environment})
 
-        return super(Deploy, self).post(*args)
+        return self.client.post(*args)

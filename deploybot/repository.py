@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-from .client import Client
-
 """
 Repository Class
 """
 
 
-class Repository(Client):
+class Repository:
+    """
+    Constructor
+    """
+    def __init__(self, client):
+        self.client = client
+
     """
     List repositories
     :return string
@@ -14,7 +18,7 @@ class Repository(Client):
     def list(self):
         url = "repositories"
 
-        return super(Repository, self).get(url)
+        return self.client.get(url)
 
     """
     Get repository
@@ -23,4 +27,4 @@ class Repository(Client):
     def get(self, repository):
         url = "repositories/%s" % repository
 
-        return super(Repository, self).get(url)
+        return self.client.get(url)
