@@ -7,23 +7,10 @@ class Deploy(Client):
         url = "deployments?limit=20&repository_id=%s&environment_id=%s" % \
               (repository, environment)
 
-        client = self.get_client(url)
-        response = client.get()
-
-        return response.body
+        return super(Deploy, self).get(url)
 
     def get(self, deploy):
-        url = "deployments/%s" % deploy
-
-        client = self.get_client(url)
-        response = client.get()
-
-        return response.body
+        return super(Deploy, self).get("deployments/%s" % deploy)
 
     def trigger(self, environment):
-        url = "deployments"
-
-        client = self.get_client(url)
-        response = client.post(request_body={'environment_id': environment})
-
-        return response.body
+        return super(Deploy, self).post("deployments", {'environment_id': environment})

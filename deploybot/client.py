@@ -26,3 +26,21 @@ class Client(object):
         }
 
         return python_http_client.Client(host=url, request_headers=headers)
+
+    """
+    Sent a GET request
+    :return string
+    """
+    def get(self, endpoint):
+        response = self.get_client(endpoint).get()
+
+        return response.body
+
+    """
+    Sent a POST request
+    :return string
+    """
+    def post(self, endpoint, params):
+        response = self.get_client(endpoint).post(request_body=params)
+
+        return response.body
