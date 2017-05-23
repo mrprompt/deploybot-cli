@@ -20,4 +20,4 @@ class TestDeploy(TestCase):
 
     # test deployment trigger
     def test_trigger(self):
-        self.assertNotEquals('', self.deploy.trigger('106088'))
+        self.assertNotEquals('', self.deploy.trigger('91944'))

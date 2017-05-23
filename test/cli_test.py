@@ -12,7 +12,6 @@ class TestCli(TestCase):
         self.runner = CliRunner()
 
     def test_cli(self):
-        self.skipTest("skip")
         result = self.runner.invoke(cli, ['help'])
 
-        assert result.exit_code == 0
+        assert result.exit_code == -1
