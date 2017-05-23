@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from deploybot.scripts import cli
 from unittest import TestCase
-from click.testing import CliRunner
 
 
 class TestCli(TestCase):
@@ -9,9 +8,16 @@ class TestCli(TestCase):
     def setUp(self):
         TestCase.setUp(self)
 
-        self.runner = CliRunner()
+    def test_main(self):
+        result = cli.main()
 
-    def test_cli(self):
-        result = self.runner.invoke(cli.main(), ['help'])
+        self.assertEquals(None, result)
 
-        assert result.exit_code == -1
+    def test_run(self):
+        self.assertRaises(TypeError, cli.run())
+
+    def test_headers(self):
+        self.assertRaises(TypeError, cli.headers())
+
+    def test_body(self):
+        self.assertRaises(TypeError, cli.body())

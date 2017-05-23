@@ -7,11 +7,12 @@ from deploybot.repository import Repository
 from deploybot.environment import Environment
 from deploybot.server import Server
 from deploybot.help import Help
-import sys
 import json
 import tableprint
 import copy
 import os
+import sys
+
 
 def run(command):
     account = os.environ.get('DEPLOYBOT_ACCOUNT')
