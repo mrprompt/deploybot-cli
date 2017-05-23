@@ -13,13 +13,15 @@ class Repository(Client):
     :return string
     """
     def list(self):
-        return super(Repository, self)\
-            .get("repositories")
+        url = "repositories"
+
+        return super(Repository, self).get(url)
 
     """
     Get repository
     :return string
     """
     def get(self, repository):
-        return super(Repository, self)\
-            .get("repositories/%s" % repository)
+        url = "repositories/%s" % repository
+
+        return super(Repository, self).get(url)

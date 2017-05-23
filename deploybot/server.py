@@ -12,13 +12,15 @@ class Server(Client):
     :return string
     """
     def list(self):
-        return super(Server, self)\
-            .get("servers")
+        url = "servers"
+
+        return super(Server, self).get(url)
 
     """
     Get server
     :return string
     """
     def get(self, server):
-        return super(Server, self)\
-            .get("servers/%s" % server)
+        url = "servers/%s" % server
+
+        return super(Server, self).get(url)
