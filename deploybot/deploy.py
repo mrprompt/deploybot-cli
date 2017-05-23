@@ -13,7 +13,9 @@ class Deploy(Client):
     :return string
     """
     def list(self, repository="", environment=""):
-        url = "deployments?limit=20&repository_id=%s&environment_id=%s" % (repository, environment)
+        url = "deployments?limit=20"
+        url += "&repository_id=%s" % repository
+        url += "&environment_id=%s" % environment
 
         return super(Deploy, self).get(url)
 
