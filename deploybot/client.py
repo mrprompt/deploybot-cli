@@ -2,7 +2,6 @@
 import python_http_client
 import os
 
-
 """
 Client Class
 """
