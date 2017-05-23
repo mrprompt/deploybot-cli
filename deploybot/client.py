@@ -3,6 +3,11 @@ import python_http_client
 import os
 
 
+"""
+Client Class
+"""
+
+
 class Client(object):
     """
     Get url from account

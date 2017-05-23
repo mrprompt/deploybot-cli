@@ -12,7 +12,7 @@ setup(
     name="deploybot-cli",
     packages=['deploybot', 'test'],
     test_suite='test',
-    version='0.2.1',
+    version='0.2.2',
     description=u"Deploybot API Client",
     long_description=long_description,
     classifiers=[],
