@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/mrprompt/deploybot-cli.svg?branch=master)](https://travis-ci.org/mrprompt/deploybot-cli)
 [![Code Climate](https://codeclimate.com/github/mrprompt/deploybot-cli/badges/gpa.svg)](https://codeclimate.com/github/mrprompt/deploybot-cli)
 [![Test Coverage](https://codeclimate.com/github/mrprompt/deploybot-cli/badges/coverage.svg)](https://codeclimate.com/github/mrprompt/deploybot-cli/coverage)
+[![Issue Count](https://codeclimate.com/github/mrprompt/deploybot-cli/badges/issue_count.svg)](https://codeclimate.com/github/mrprompt/deploybot-cli)
+[![GitHub issues](https://img.shields.io/github/issues/mrprompt/deploybot-cli.svg)](https://github.com/mrprompt/deploybot-cli/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mrprompt/deploybot-cli.svg)](https://github.com/mrprompt/deploybot-cli/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://raw.githubusercontent.com/mrprompt/deploybot-cli/master/LICENSE)
 
 A client to [Deploybot](https://www.deploybot.com) service.
 
