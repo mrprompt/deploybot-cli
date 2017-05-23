@@ -9,6 +9,7 @@ from deploybot.environment import Environment
 from deploybot.server import Server
 from deploybot.help import Help
 
+
 class TestCli(TestCase):
     # Bootstrap
     def setUp(self):
@@ -35,7 +36,7 @@ class TestCli(TestCase):
     )
 
     @data_provider(commands)
-    def test_run_return_class_with_all_commands(self, command="", instance=object):
+    def test_run_return_class_with_valid_command(self, command="", instance=object):
         result = cli.run(command)
 
         self.assertIsInstance(result, instance)
@@ -46,8 +47,22 @@ class TestCli(TestCase):
     def test_headers_raises_type_error_without_command(self):
         self.assertRaises(TypeError, cli.headers)
 
-    def test_headers_return_class_with_valid_command(self):
-        self.assertIsInstance(cli.headers("help"), object)
+    commands = lambda: (
+        (
+            ("help", 3),
+            ("repository", 3),
+            ("user", 4),
+            ("environment", 6),
+            ("deploy", 5),
+            ("server", 4),
+        )
+    )
+
+    @data_provider(commands)
+    def test_headers_return_return_with_valid_command(self, command="", size=0):
+        result = cli.headers(command)
+
+        self.assertEquals(len(result), size)
 
     def test_body_raises_index_error_with_unknown_command(self):
         self.assertRaises(IndexError, cli.body, *["default", "default", {}])
@@ -55,10 +70,25 @@ class TestCli(TestCase):
     def test_body_raises_type_error_parameters(self):
         self.assertRaises(TypeError, cli.body)
 
-    def test_body_return_class_with_valid_command(self):
-        item = {'command': True, 'description': True, 'params': True};
+    commands = lambda: (
+        (
+            ("help", "list", {'command': True, 'description': True, 'params': True}),
+            ("repository", "list", {'id': True, 'name': True, 'title': True}),
+            ("repository", "get", [True, True, True, True, True, True, True, True]),
+            ("user", "list", {'id': True, 'first_name': 'foo', 'last_name': 'bar', 'email': 'foo@bar.bar', 'is_admin': 0}),
+            ("user", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
+            ("environment", "list", {'id': True, 'repository_id': '0', 'name': 'bar', 'branch_name': 'foo', 'is_automatic': 0, 'current_version': 0}),
+            ("environment", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
+            ("deploy", "list", {'id': True, 'repository_id': '0', 'environment_id': '0', 'state': 'foo', 'deployed_version': 0}),
+            ("deploy", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
+            ("server", "list", {'id': True, 'environment_id': '0', 'name': 'foo', 'protocol': "foo"}),
+            ("server", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
+        )
+    )
 
-        self.assertIsInstance(cli.body("help", "list", item), object)
+    @data_provider(commands)
+    def test_body_return_class_with_valid_command(self, command="", parameter="", result={}):
+        self.assertIsInstance(cli.body(command, parameter, result), list)
 
     def test_main(self):
         self.skipTest("Not implemented")
