@@ -18,6 +18,14 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-      'python-http-client'
-    ]
+        'python_http_client', 'tableprint', 'click'
+    ],
+    extras_require={
+        'test': ['pytest', 'pytest-cov', 'mock'],
+    },
+    entry_points={
+        'console_scripts': [
+            'deploybot-cli=deploybot.scripts.cli:main'
+        ]
+    }
 )
