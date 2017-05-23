@@ -1,20 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from codecs import open as codecs_open
 from setuptools import setup
-
-
-# Get the long description from the relevant file
-with codecs_open('README.md', encoding='utf-8') as f:
-    long_description = f.read()
 
 setup(
     name="deploybot-cli",
     packages=['deploybot', 'test'],
     test_suite='test',
-    version='0.2.3',
+    version='0.2.4',
     description=u"Deploybot API Client",
-    long_description=long_description,
+    long_description=u"Deploybot terminal tool",
     classifiers=[],
     keywords='deploy,service,api,client,cli,deploybot,continuous,delivery,cd',
     author=u"Thiago Paes",
