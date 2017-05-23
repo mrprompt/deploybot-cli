@@ -12,11 +12,13 @@ class User(Client):
     :return string
     """
     def list(self):
-        return super(User, self).get("users")
+        return super(User, self)\
+            .get("users")
 
     """
     Get user
     :return string
     """
     def get(self, user):
-        return super(User, self).get("users/%s" % user)
+        return super(User, self)\
+            .get("users/%s" % user)
