@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 from json import dumps
 
+"""
+Help Class
+"""
+
 
 class Help(object):
+    """
+    List help
+    :return string
+    """
     def list(self):
         content = {
             'meta': {

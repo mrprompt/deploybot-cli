@@ -1,16 +1,24 @@
 # -*- coding: utf-8 -*-
 from .client import Client
 
+"""
+Server Class
+"""
+
 
 class Server(Client):
+    """
+    List servers
+    :return string
+    """
     def list(self):
-        client = self.get_client("servers")
-        response = client.get()
+        return super(Server, self)\
+            .get("servers")
 
-        return response.body
-
+    """
+    Get server
+    :return string
+    """
     def get(self, server):
-        client = self.get_client("servers/%s" % server)
-        response = client.get()
-
-        return response.body
+        return super(Server, self)\
+            .get("servers/%s" % server)

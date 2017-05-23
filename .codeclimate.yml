@@ -30,3 +30,5 @@ exclude_paths:
 - dist/
 - test/
 - build/
+- ./cli.py
+- ./README.md

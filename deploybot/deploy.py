@@ -2,28 +2,35 @@
 from .client import Client
 
 
+"""
+Deployment Class
+"""
+
+
 class Deploy(Client):
+    """
+    List deployments
+    :return string
+    """
     def list(self, repository="", environment=""):
         url = "deployments?limit=20&repository_id=%s&environment_id=%s" % \
               (repository, environment)
 
-        client = self.get_client(url)
-        response = client.get()
+        return super(Deploy, self)\
+            .get(url)
 
-        return response.body
-
+    """
+    Get deployment by id
+    :return string
+    """
     def get(self, deploy):
-        url = "deployments/%s" % deploy
+        return super(Deploy, self)\
+            .get("deployments/%s" % deploy)
 
-        client = self.get_client(url)
-        response = client.get()
-
-        return response.body
-
+    """
+    Trigger a deploy
+    :return string
+    """
     def trigger(self, environment):
-        url = "deployments"
-
-        client = self.get_client(url)
-        response = client.post(request_body={'environment_id': environment})
-
-        return response.body
+        return super(Deploy, self)\
+            .post("deployments", {'environment_id': environment})

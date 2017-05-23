@@ -2,15 +2,24 @@
 from .client import Client
 
 
+"""
+Repository Class
+"""
+
+
 class Repository(Client):
+    """
+    List repositories
+    :return string
+    """
     def list(self):
-        client = self.get_client("repositories")
-        response = client.get()
+        return super(Repository, self)\
+            .get("repositories")
 
-        return response.body
-
+    """
+    Get repository
+    :return string
+    """
     def get(self, repository):
-        client = self.get_client("repositories/%s" % repository)
-        response = client.get()
-
-        return response.body
+        return super(Repository, self)\
+            .get("repositories/%s" % repository)

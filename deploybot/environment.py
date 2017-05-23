@@ -2,17 +2,24 @@
 from .client import Client
 
 
+"""
+Environment Class
+"""
+
+
 class Environment(Client):
+    """
+    List environments
+    :return string
+    """
     def list(self, repository=""):
-        url = "environments?repository_id=%s" % repository
-        client = self.get_client(url)
-        response = client.get()
+        return super(Environment, self)\
+            .get("environments?repository_id=%s" % repository)
 
-        return response.body
-
+    """
+    Get an environment
+    :return string
+    """
     def get(self, environment):
-        url = "environments/%s" % environment
-        client = self.get_client(url)
-        response = client.get()
-
-        return response.body
+        return super(Environment, self)\
+            .get("environments/%s" % environment)
