@@ -21,7 +21,7 @@ setup(
         'python_http_client', 'tableprint',
     ],
     extras_require={
-        'test': ['pytest', 'pytest-cov', 'mock'],
+        'test': ['pytest', 'pytest-cov', 'mock', 'unittest-data-provider'],
     },
     entry_points={
         'console_scripts': [

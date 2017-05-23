@@ -5,3 +5,4 @@ tableprint
 coverage
 pytest
 pytest-cov
+unittest-data-provider
