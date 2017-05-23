@@ -59,91 +59,91 @@ def headers(command):
 def body(command, cmd, item):
     if command == "repository" and cmd == "list":
         body = [
-            unicode(item['id']),
-            unicode(item['name']),
-            unicode(item['title']),
+            item['id'],
+            item['name'],
+            item['title'],
         ]
     elif command == "repository" and cmd == "get":
         body = [
-            unicode(item[7]),
-            unicode(item[0]),
-            unicode(item[2]),
+            item[7],
+            item[0],
+            item[2],
         ]
     elif command == "user" and cmd == "list":
         body = [
-            unicode(item['id']),
-            unicode(item['first_name'] + ' ' + item['last_name']),
-            unicode(item['email']),
-            unicode(item['is_admin']),
+            item['id'],
+            item['first_name'] + ' ' + item['last_name'],
+            item['email'],
+            item['is_admin'],
         ]
     elif command == "user" and cmd == "get":
         body = [
-            unicode(item[7]),  # id
-            unicode(item[0] + ' ' + item[1]),  # name
-            unicode(item[4]),  # email
-            unicode(bool(item[5])),  # admin
+            item[7],  # id
+            item[0] + ' ' + item[1],  # name
+            item[4],  # email
+            bool(item[5]),  # admin
         ]
     elif command == "environment" and cmd == "list":
         body = [
-            unicode(item['id']),
-            unicode(item['repository_id']),
-            unicode(item['name']),
-            unicode(item['branch_name']),
-            unicode(item['is_automatic']),
-            unicode(item['current_version']),
+            item['id'],
+            item['repository_id'],
+            item['name'],
+            item['branch_name'],
+            item['is_automatic'],
+            item['current_version'],
         ]
     elif command == "environment" and cmd == "get":
         body = [
-            unicode(item[10]),
-            unicode(item[0]),
-            unicode(item[1]),
-            unicode(item[7]),
-            unicode(item[6]),
-            unicode(item[9]),
+            item[10],
+            item[0],
+            item[1],
+            item[7],
+            item[6],
+            item[9],
         ]
     elif command == "deploy" and cmd == "list":
         body = [
-            unicode(item['id']),
-            unicode(item['repository_id']),
-            unicode(item['environment_id']),
-            unicode(item['state']),
-            unicode(item['deployed_version']),
+            item['id'],
+            item['repository_id'],
+            item['environment_id'],
+            item['state'],
+            item['deployed_version'],
         ]
     elif command == "deploy" and cmd == "get":
         body = [
-            unicode(item[13]),
-            unicode(item[1]),
-            unicode(item[2]),
-            unicode(item[10]),
-            unicode(item[11]),
+            item[13],
+            item[1],
+            item[2],
+            item[10],
+            item[11],
         ]
     elif command == "deploy" and cmd == "trigger":
         body = [
-            unicode(item[13]),
-            unicode(item[1]),
-            unicode(item[2]),
-            unicode(item[10]),
-            unicode(item[11]),
+            item[13],
+            item[1],
+            item[2],
+            item[10],
+            item[11],
         ]
     elif command == "server" and cmd == "list":
         body = [
-            unicode(item['id']),
-            unicode(item['environment_id']),
-            unicode(item['name']),
-            unicode(item['protocol']),
+            item['id'],
+            item['environment_id'],
+            item['name'],
+            item['protocol'],
         ]
     elif command == "server" and cmd == "get":
         body = [
-            unicode(item[8]),
-            unicode(item[1]),
-            unicode(item[3]),
-            unicode(item[2]),
+            item[8],
+            item[1],
+            item[3],
+            item[2],
         ]
     elif command == "help":
         body = [
-            unicode(item['command']),
-            unicode(item['description']),
-            unicode(item['params'])
+            item['command'],
+            item['description'],
+            item['params']
         ]
     else:
         raise IndexError("Body not found")
@@ -193,7 +193,7 @@ def main(out=sys.stdout):
             )
         ]
 
-    tableprint.table(data, headers=header, width=int(column_width), style=unicode(style), out=out)
+    tableprint.table(data, headers=header, width=int(column_width), style=style, out=out)
 
 if __name__ == "__main__":
     main()
