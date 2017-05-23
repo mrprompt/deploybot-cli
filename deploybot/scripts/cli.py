@@ -194,6 +194,3 @@ def main(out=sys.stdout):
         ]
 
     tableprint.table(data, headers=header, width=int(column_width), style=style, out=out)
-
-if __name__ == "__main__":
-    main()

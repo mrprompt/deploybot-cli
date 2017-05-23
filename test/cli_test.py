@@ -87,6 +87,7 @@ class TestCli(TestCase):
             ("environment", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
             ("deploy", "list", {'id': True, 'repository_id': '0', 'environment_id': '0', 'state': 'foo', 'deployed_version': 0}),
             ("deploy", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
+            ("deploy", "trigger", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
             ("server", "list", {'id': True, 'environment_id': '0', 'name': 'foo', 'protocol': "foo"}),
             ("server", "get", ["nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono", "nono"]),
         )
