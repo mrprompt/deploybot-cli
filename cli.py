@@ -179,10 +179,7 @@ def main():
 
             data.append(body(arg1, cmd, item))
 
-    except TypeError as e:
-        header = ('Error', 'Code')
-        data = [str(e), 0]
-    except IndexError as e:
+    except Exception as e:
         header = ('Error', 'Code')
         data = [
             (
