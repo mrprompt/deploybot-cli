@@ -28,18 +28,18 @@ COLUMN_STYLE="block" (optional - default = fancy_grid, availables = round, fancy
 # Usage
 
 ```
-- deploybot-cli help
-- deploybot-cli user list
-- deploybot-cli user get [user_id]
-- deploybot-cli deploy list [repository_id] [environment_id]
-- deploybot-cli deploy get [deploy_id]
-- deploybot-cli deploy trigger [deploy_id]
-- deploybot-cli environment list [repository_id]
-- deploybot-cli environment get [environment_id]
-- deploybot-cli repository list
-- deploybot-cli repository get [repository_id]
-- deploybot-cli server list [repository_id] [environment_id]
-- deploybot-cli server get [server_id]
+- deploybot help
+- deploybot user list
+- deploybot user get [user_id]
+- deploybot deploy list [repository_id] [environment_id]
+- deploybot deploy get [deploy_id]
+- deploybot deploy trigger [deploy_id]
+- deploybot environment list [repository_id]
+- deploybot environment get [environment_id]
+- deploybot repository list
+- deploybot repository get [repository_id]
+- deploybot server list [repository_id] [environment_id]
+- deploybot server get [server_id]
 
 ```
 
