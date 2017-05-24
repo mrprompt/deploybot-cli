@@ -151,13 +151,29 @@ def body(command, cmd, item):
     return body
 
 
+def response(cmd, param, result):
+    content = json.loads(result)
+    data = []
+
+    if param == 'list':
+        items = content.items()
+
+        for item in items[1][1]:
+            data.append(body(cmd, param, item))
+    else:
+        item = content.values()
+
+        data.append(body(cmd, param, item))
+
+    return data
+
+
 def main(out=sys.stdout):
     column_width = os.environ.get('COLUMN_WIDTH', 32)
     style = os.environ.get('COLUMN_STYLE', 'fancy_grid')
 
     try:
         arg1 = sys.argv[1]
-
         args = copy.copy(sys.argv)
 
         args.pop(0)
@@ -169,21 +185,8 @@ def main(out=sys.stdout):
             cmd = args.pop(0)
 
         result = getattr(run(arg1), cmd)(*args)
-
         header = headers(arg1)
-        content = json.loads(result)
-        data = []
-
-        if cmd == 'list':
-            items = content.items()
-
-            for item in items[1][1]:
-                data.append(body(arg1, cmd, item))
-        else:
-            item = content.values()
-
-            data.append(body(arg1, cmd, item))
-
+        data = response(arg1, cmd, result)
     except Exception as e:
         header = ('Error', 'Code')
         data = [
