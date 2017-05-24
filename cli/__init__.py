@@ -6,7 +6,8 @@ from deploybot.user import User
 from deploybot.repository import Repository
 from deploybot.environment import Environment
 from deploybot.server import Server
-from deploybot.help import Help
+from .help import Help
+
 import json
 import tableprint
 import copy

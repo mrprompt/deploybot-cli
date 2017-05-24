@@ -18,7 +18,7 @@ setup(
     zip_safe=False,
     packages=find_packages(),
     install_requires=[
-        'python_http_client', 'tableprint',
+        'python_http_client', 'tableprint', 'deploybot-sdk',
     ],
     extras_require={
         'test': ['pytest', 'pytest-cov', 'mock', 'unittest-data-provider'],
