@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
-from deploybot.help import Help
+from cli.help import Help
 
 
 class TestHelper(TestCase):

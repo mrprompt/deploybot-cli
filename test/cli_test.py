@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from deploybot.scripts import cli
 from unittest import TestCase
 from unittest_data_provider import data_provider
 from deploybot.deploy import Deploy
@@ -7,8 +6,9 @@ from deploybot.user import User
 from deploybot.repository import Repository
 from deploybot.environment import Environment
 from deploybot.server import Server
-from deploybot.help import Help
+from cli.help import Help
 
+import cli
 import mock
 import sys
 import json
