@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(
     name="deploybot-cli",
     test_suite='test',
-    version='0.2.8',
+    version='0.2.9',
     description=u"Deploybot API Client",
     long_description=u"Deploybot terminal tool",
     classifiers=[],
@@ -25,7 +25,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'deploybot = deploybot.scripts.cli:main'
+            'deploybot = cli:main'
         ]
     }
 )
