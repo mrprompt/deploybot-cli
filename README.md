@@ -8,7 +8,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/mrprompt/deploybot-cli.svg)](https://github.com/mrprompt/deploybot-cli/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://raw.githubusercontent.com/mrprompt/deploybot-cli/master/LICENSE)
 
-A client to [Deploybot](https://www.deploybot.com) service.
+A client to [Deploybot](https://www.deploybot.com) service using [Deploybot-SDK](https://github.com/mrprompt/deploybot-sdk).
 
 # Install
 
