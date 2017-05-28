@@ -10,7 +10,6 @@ from .deploy import deploy
 def cli():
     pass
 
-
 cli.add_command(user)
 cli.add_command(server)
 cli.add_command(environment)

@@ -7,6 +7,7 @@ import tableprint
 
 output = StringIO()
 pass_config = click.make_pass_decorator(Config, ensure=True)
+header = ('ID', 'Repository ID', 'Environment Name', 'Branch', 'Automatic', 'Current')
 
 
 @click.group('environment', short_help='Environment commands')
@@ -21,7 +22,6 @@ def environment_list(config, repository=None):
     """List environments"""
     client = Environment(config.client)
     result = client.list(repository)
-    header = ('ID', 'Repository ID', 'Environment Name', 'Branch', 'Automatic', 'Current')
     data = response('environment', 'list', result)
 
     tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
@@ -35,7 +35,6 @@ def environment_get(config, id):
     """Get info from environment"""
     client = Environment(config.client)
     result = client.get(id)
-    header = ('ID', 'Repository ID', 'Environment Name', 'Branch', 'Automatic', 'Current')
     data = response('environment', 'get', result)
 
     tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)

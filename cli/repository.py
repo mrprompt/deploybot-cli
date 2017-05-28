@@ -7,6 +7,7 @@ import tableprint
 
 output = StringIO()
 pass_config = click.make_pass_decorator(Config, ensure=True)
+header = ('ID', 'Title', 'Name')
 
 
 @click.group('repository', short_help='Repository commands')
@@ -20,7 +21,6 @@ def repository_list(config):
     """List repositorys"""
     client = Repository(config.client)
     result = client.list()
-    header = ('ID', 'Title', 'Name')
     data = response('repository', 'list', result)
 
     tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
@@ -34,7 +34,6 @@ def repository_get(config, id):
     """Get info from repository"""
     client = Repository(config.client)
     result = client.get(id)
-    header = ('ID', 'Title', 'Name')
     data = response('repository', 'get', result)
 
     tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
