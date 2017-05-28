@@ -13,11 +13,13 @@ def deploy():
 
 
 @deploy.command('list')
+@click.argument('repository', type=int)
+@click.argument('environment', type=int)
 @pass_config
-def deploy_list(config):
+def deploy_list(config, repository, environment):
     """List deploys"""
     client = Deploy(config.client)
-    result = client.list()
+    result = client.list(repository, environment)
     header = ('ID', 'Repository ID', 'Environment ID', 'State', 'Version')
     # data = response('deploy', 'list', result)
 

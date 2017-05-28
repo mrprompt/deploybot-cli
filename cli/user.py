@@ -26,12 +26,12 @@ def user_list(config):
 
 
 @user.command('get')
-@click.argument('id', type=int)
+@click.argument('id')
 @pass_config
-def user_get(config):
+def user_get(config, id):
     """Get info from user"""
     client = User(config.client)
-    result = client.list()
+    result = client.get(id)
     header = ('ID', 'Name', 'Email', 'Admin')
     # data = response('user', 'list', result)
 
