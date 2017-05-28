@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest_data_provider import data_provider
-from cli.cli import body, response
+from cli import body, response
 import mock
 import sys
 import json

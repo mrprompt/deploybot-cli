@@ -1,9 +1,11 @@
 from deploybot.deploy import Deploy
 from .config import Config
-
+from . import response
+from io import StringIO
 import click
 import tableprint
 
+output = StringIO()
 pass_config = click.make_pass_decorator(Config, ensure=True)
 
 
@@ -21,10 +23,10 @@ def deploy_list(config, repository, environment):
     client = Deploy(config.client)
     result = client.list(repository, environment)
     header = ('ID', 'Repository ID', 'Environment ID', 'State', 'Version')
-    # data = response('deploy', 'list', result)
+    data = response('deploy', 'list', result)
 
-    # tableprint.table(data, headers=header, width=int(config.width), style=config.style)
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())
 
 
 @deploy.command('get')
@@ -35,8 +37,10 @@ def deploy_get(config, id):
     client = Deploy(config.client)
     result = client.get(id)
     header = ('ID', 'Repository ID', 'Environment ID', 'State', 'Version')
+    data = response('deploy', 'get', result)
 
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())
 
 
 @deploy.command('trigger')
@@ -47,5 +51,7 @@ def deploy_get(config, id):
     client = Deploy(config.client)
     result = client.get(id)
     header = ('ID', 'Repository ID', 'Environment ID', 'State', 'Version')
+    data = response('deploy', 'trigger', result)
 
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())

@@ -1,9 +1,11 @@
 from deploybot.repository import Repository
 from .config import Config
-
+from . import response
+from io import StringIO
 import click
 import tableprint
 
+output = StringIO()
 pass_config = click.make_pass_decorator(Config, ensure=True)
 
 
@@ -19,10 +21,10 @@ def repository_list(config):
     client = Repository(config.client)
     result = client.list()
     header = ('ID', 'Title', 'Name')
-    # data = response('repository', 'list', result)
+    data = response('repository', 'list', result)
 
-    # tableprint.table(data, headers=header, width=int(config.width), style=config.style)
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())
 
 
 @repository.command('get')
@@ -33,5 +35,7 @@ def repository_get(config, id):
     client = Repository(config.client)
     result = client.get(id)
     header = ('ID', 'Title', 'Name')
+    data = response('repository', 'get', result)
 
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())

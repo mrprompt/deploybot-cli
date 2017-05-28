@@ -1,9 +1,11 @@
 from deploybot.server import Server
 from .config import Config
-
+from . import response
+from io import StringIO
 import click
 import tableprint
 
+output = StringIO()
 pass_config = click.make_pass_decorator(Config, ensure=True)
 
 
@@ -19,10 +21,10 @@ def server_list(config):
     client = Server(config.client)
     result = client.list()
     header = ('ID', 'Environment ID', 'Name', 'Protocol')
-    # data = response('server', 'list', result)
+    data = response('server', 'list', result)
 
-    # tableprint.table(data, headers=header, width=int(config.width), style=config.style)
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())
 
 
 @server.command('get')
@@ -33,5 +35,7 @@ def server_get(config, id):
     client = Server(config.client)
     result = client.get(id)
     header = ('ID', 'Environment ID', 'Name', 'Protocol')
+    data = response('server', 'get', result)
 
-    click.echo(result)
+    tableprint.table(data, headers=header, width=int(config.width), style=config.style, out=output)
+    click.echo(output.getvalue())
