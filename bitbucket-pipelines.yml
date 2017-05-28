@@ -5,4 +5,4 @@ pipelines:
     - step:
         script:
           - pip install -r requirements.txt
-          - python setup.py test
+          - py.test --cov=deploybot test/

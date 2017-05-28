@@ -13,7 +13,6 @@ before_script:
   - pip install -Iv "codeclimate-test-reporter<4.4"
 
 script:
-  - python setup.py test
   - py.test --cov=deploybot test/
 
 after_success:
