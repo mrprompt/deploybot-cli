@@ -3,6 +3,7 @@ from cli.config import Config
 
 import os
 
+
 class TestConfig(TestCase):
     def setUp(self):
         TestCase.setUp(self)
