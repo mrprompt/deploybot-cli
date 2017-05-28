@@ -13,11 +13,12 @@ def environment():
 
 
 @environment.command('list')
+@click.argument('repository', type=int, required=False)
 @pass_config
-def environment_list(config):
+def environment_list(config, repository=None):
     """List environments"""
     client = Environment(config.client)
-    result = client.list()
+    result = client.list(repository)
     header = ('ID', 'Repository ID', 'Environment Name', 'Branch', 'Automatic', 'Current')
     # data = response('environment', 'list', result)
 
