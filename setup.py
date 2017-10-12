@@ -17,7 +17,7 @@ setup(
     zip_safe=False,
     packages=find_packages(exclude=['test']),
     install_requires=[
-        'tableprint', 'deploybot-sdk', 'click'
+        'tableprint', 'deploybot-sdk', 'deploybot-client', 'click'
     ],
     extras_require={
         'test': ['pytest', 'pytest-cov', 'mock', 'unittest-data-provider', 'coverage'],
