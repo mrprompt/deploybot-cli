@@ -11,8 +11,8 @@ class TestEnvironment(TestCase):
         runner = CliRunner()
         result = runner.invoke(environment, ['list'])
 
-        assert result.exit_code == -1
-        assert result.output == ""
+        assert result.exit_code == 2
+        assert result.output != ""
 
     def test_environment_list_with_repository(self):
         runner = CliRunner()
