@@ -16,7 +16,7 @@ def environment():
 
 
 @environment.command('list')
-@click.argument('repository', type=int, required=False)
+@click.argument('repository', type=int, required=True)
 @pass_config
 def environment_list(config, repository=None):
     """List environments"""
