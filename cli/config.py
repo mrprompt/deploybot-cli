@@ -1,5 +1,5 @@
 import os
-from deploybot.client import Client
+from client.client import Client
 
 
 class Config(object):

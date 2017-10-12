@@ -1,9 +1,0 @@
-python_http_client
-mock
-click
-tableprint
-coverage
-pytest
-pytest-cov
-unittest-data-provider
-deploybot-sdk

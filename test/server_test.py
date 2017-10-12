@@ -16,7 +16,14 @@ class TestServer(TestCase):
 
     def test_server_get(self):
         runner = CliRunner()
-        result = runner.invoke(server, ['get', '125815'])
+        result = runner.invoke(server, ['get', '134656'])
 
         assert result.exit_code == 0
         assert result.output != ""
+
+    def test_server_get_with_absent_server(self):
+        runner = CliRunner()
+        result = runner.invoke(server, ['get', '125815'])
+
+        assert result.exit_code == -1
+        assert result.output == ''

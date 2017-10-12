@@ -17,10 +17,10 @@ setup(
     zip_safe=False,
     packages=find_packages(exclude=['test']),
     install_requires=[
-        'python_http_client', 'tableprint', 'deploybot-sdk', 'click'
+        'tableprint', 'deploybot-sdk', 'click'
     ],
     extras_require={
-        'test': ['pytest', 'pytest-cov', 'mock', 'unittest-data-provider'],
+        'test': ['pytest', 'pytest-cov', 'mock', 'unittest-data-provider', 'coverage'],
     },
     entry_points={
         'console_scripts': [
